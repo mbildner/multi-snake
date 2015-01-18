@@ -1,0 +1,25 @@
+{
+  "name": "multi-snake",
+  "version": "1.0.0",
+  "description": "multiplayer snake game for the browser",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mbildner/multi-snake.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mbildner/multi-snake/issues"
+  },
+  "homepage": "https://github.com/mbildner/multi-snake",
+  "devDependencies": {
+    "express": "^4.11.0",
+    "gulp": "^3.8.10",
+    "gulp-concat": "^2.4.3",
+    "websocket": "^1.0.17"
+  }
+}
