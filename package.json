@@ -18,8 +18,11 @@
   "homepage": "https://github.com/mbildner/multi-snake",
   "devDependencies": {
     "express": "^4.11.0",
+    "express-ws": "^0.2.3",
     "gulp": "^3.8.10",
     "gulp-concat": "^2.4.3",
+    "gulp-wrap": "^0.10.0",
+    "rimraf": "^2.2.8",
     "websocket": "^1.0.17"
   }
 }
