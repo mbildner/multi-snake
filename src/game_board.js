@@ -1,11 +1,30 @@
-'use strict';
+function Board () {
+  'use strict';
 
-var board = document.getElementsByTagName('canvas')[0];
+  var rowsNum = 40;
+  var colsNum = 40;
 
-board.width = 1000;
-board.height = 1000;
+  this.getSize = function () {
+    return {
+      rows: rowsNum,
+      cols: colsNum
+    };
+  };
 
-var ctx = board.getContext('2d');
+  var boardModel = [];
+  var rowModel;
+  var colModel;
+  var r, c;
 
-ctx.fillStyle = 'red';
-ctx.fillRect(0, 0, 1000, 1000);
+  for (r=0; r<rowsNum; r++) {
+    rowModel = [];
+    for (c=0; c<colsNum; c++) {
+      rowModel.push({});
+    }
+    boardModel.push(rowModel);
+  }
+
+  // nuke the reference
+  rowModel = null;
+
+}

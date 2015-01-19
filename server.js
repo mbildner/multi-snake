@@ -1,10 +1,14 @@
 /* jshint node:true */
 'use strict';
 
-var app = require('express')();
+var express = require('express');
+var app = module.exports.app = exports.app = express();
 require('express-ws')(app);
 
 var path = require('path');
+var _ = require('lodash');
+
+var users = {};
 
 app.get('/', function (req, res) {
   var indexPath = path.join(__dirname, 'index.html');
@@ -17,12 +21,21 @@ app.get('/dist/all.js', function (req, res) {
 });
 
 app.ws('/ws', function (ws, req) {
-  ws.send('hello back from the server!');
 
-  ws.on('message', function (msg) {
-    console.log(arguments)
-    ws.send('echo: ' + msg);
+  // register new user
+  var userId = _.size(users).toString();
+  users[userId] = ws;
+  var newUserMessage = ['newUser', userId].join(':');
+  ws.send(newUserMessage);
+
+  ws.on('message', function (messageStr) {
+    console.log(userId, ' says: ', messageStr);
   });
+
+  ws.on('close', function () {
+    users[userId] = null;
+  });
+
 });
 
 app.listen(8000);
